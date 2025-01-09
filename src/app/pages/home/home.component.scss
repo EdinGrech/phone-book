@@ -1,0 +1,33 @@
+.list {
+  width: calc(100% - 20px);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .listitem {
+    display: flex;
+    align-items: center;
+    color: black;
+    width: calc(100% - 20px);
+    gap: 10px;
+    border-bottom: 1px solid rgb(187, 71, 181);
+    padding: 0 10px;
+
+    .separator {
+      flex: 1;
+    }
+
+    i {
+      cursor: pointer;
+      &:hover {
+        color: rgb(187, 71, 181);
+      }
+    }
+  }
+}
+.add-fab {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}

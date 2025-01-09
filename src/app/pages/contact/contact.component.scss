@@ -1,0 +1,44 @@
+.page {
+  .content {
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: calc(100vh - 56px);
+      i {
+        font-size: 30px;
+      }
+    }
+
+    .contact-details {
+      h2 {
+        margin: 7px 0;
+      }
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid rgb(187, 71, 181);
+      margin: 15px;
+    }
+
+    .error {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .error-contend {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 56px);
+        color: red;
+        gap: 10px;
+        width: 70%;
+        p {
+          text-align: center;
+        }
+        i {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}

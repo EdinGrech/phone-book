@@ -1,0 +1,31 @@
+<div class="page">
+  <mat-toolbar>
+    <i class="fa-solid fa-house" [routerLink]="['/']"></i>
+    <h1>Contact Details</h1>
+  </mat-toolbar>
+  <div class="content">
+    @let contact = contact$ | async; @switch(contact?.contact?.state){ @case
+    (ContentState.LOADING) {
+    <div class="loading">
+      <i class="fa-solid fa-spinner fa-spin"></i>
+    </div>
+    } @case (ContentState.LOADED) {
+    <div class="contact-details">
+      <h2>
+        {{ contact?.contact?.data?.contract?.name }}
+        {{ contact?.contact?.data?.contract?.surname }}
+      </h2>
+      <p>email: {{ contact?.contact?.data?.contract?.email }}</p>
+      <p>phone: {{ contact?.contact?.data?.contract?.phone }}</p>
+      <p>address: {{ contact?.contact?.data?.contract?.address }}</p>
+    </div>
+    } @case (ContentState.ERROR) {
+    <div class="error">
+      <div class="error-contend">
+        <i class="fa-solid fa-exclamation-circle"></i>
+        <p>There was an error loading the contact details</p>
+      </div>
+    </div>
+    } }
+  </div>
+</div>

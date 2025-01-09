@@ -1,0 +1,80 @@
+<div class="page">
+  <mat-toolbar>
+    <i class="fa-solid fa-house" [routerLink]="['/']"></i>
+    <h1>Contact Details</h1>
+  </mat-toolbar>
+
+  <div class="content">
+    @if(pageState == ContentState.NOT_INITIALIZED){
+    <div class="form" [formGroup]="contactForm">
+      <mat-form-field>
+        <mat-label>Name:</mat-label>
+        <input matInput id="name" formControlName="name" type="text" />
+        @if(contactForm.get('name')?.invalid &&
+        contactForm.get('name')?.touched){
+        <div class="error">
+          Name is required and must be at most 50 characters.
+        </div>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="surname">Surname:</mat-label>
+        <input matInput id="surname" formControlName="surname" type="text" />
+        @if(contactForm.get('surname')?.invalid &&
+        contactForm.get('surname')?.touched){
+
+        <div>Surname is required and must be at most 50 characters.</div>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="phone">Phone:</mat-label>
+        <input matInput id="phone" formControlName="phone" type="text" />
+        @if(contactForm.get('phone')?.invalid &&
+        contactForm.get('phone')?.touched){
+        <div>Phone is required and must be a valid phone number.</div>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="email">Email:</mat-label>
+        <input matInput id="email" formControlName="email" type="email" />
+        @if(contactForm.get('email')?.invalid &&
+        contactForm.get('email')?.touched){
+
+        <div>Email is required and must be valid.</div>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="address">Address:</mat-label>
+        <textarea matInput id="address" formControlName="address"></textarea>
+        @if(contactForm.get('address')?.invalid &&
+        contactForm.get('address')?.touched){
+
+        <div>Address is required and must be at most 100 characters.</div>
+        }
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        (click)="submitForm()"
+        [disabled]="contactForm.invalid"
+      >
+        Submit
+      </button>
+    </div>
+    } @else if(pageState == ContentState.LOADING){
+    <div class="max-icon">
+      <i class="fa-solid fa-spinner fa-spin"></i>
+    </div>
+    } @else if (pageState == ContentState.LOADED) {
+    <div class="max-icon">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    } @else if (pageState == ContentState.ERROR){
+    <div class="error">An error occurred while loading the page.</div>
+    }
+  </div>
+</div>

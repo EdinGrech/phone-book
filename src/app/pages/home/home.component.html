@@ -1,0 +1,22 @@
+<div>
+  <mat-toolbar><h1>Home</h1></mat-toolbar>
+  @let customerData = contactData$ | async; @switch(customerData?.state){ @case
+  (ContentState.LOADING) { } @case (ContentState.LOADED) {
+  <div role="list" class="list">
+    @for(contact of customerData?.data; track $index){
+    <div class="listitem">
+      <p>{{ contact.name }}</p>
+      <p>{{ contact.surname }}</p>
+      <span class="separator"></span>
+      <i
+        class="fa-solid fa-arrow-right"
+        [routerLink]="['contact', contact.id]"
+      ></i>
+    </div>
+    }
+  </div>
+  } }
+</div>
+<button mat-mini-fab class="add-fab" [routerLink]="['new']">
+  <i class="fa-solid fa-plus"></i>
+</button>
